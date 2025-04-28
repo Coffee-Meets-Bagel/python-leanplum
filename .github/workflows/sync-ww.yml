@@ -1,0 +1,19 @@
+---
+name: Sync to WW
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  sync-to-ww:
+    name: Sync to WW
+    uses: Coffee-Meets-Bagel/workflows/.github/workflows/sync-ww.yml@v1.0.1
+    with:
+      source_repo: Coffee-Meets-Bagel/python-leanplum
+      destination_repo: cmb-ww/python-leanplum
+      source_branch: master
+      destination_branch: us-sync
+    secrets:
+      ww_sync_key: ${{ secrets.WW_SYNC_KEY }}
